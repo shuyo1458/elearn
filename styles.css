@@ -88,6 +88,14 @@ h2 {
     align-items: center;
 }
 
+.about-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
 /* 產品卡片樣式 */
 .product-grid {
     display: grid;
@@ -100,6 +108,9 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-card img {
@@ -107,6 +118,27 @@ h2 {
     height: 200px;
     object-fit: cover;
     border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.product-card .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: auto;
+    width: 100%;
 }
 
 /* 服務區塊樣式 */
@@ -176,4 +208,345 @@ h2 {
     .contact-content {
         grid-template-columns: 1fr;
     }
-} 
+
+    .about-image {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .about-image img {
+        max-height: 300px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .product-card {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .product-card img {
+        height: 180px;
+    }
+}
+
+/* 聊天相關樣式 */
+.chat-container {
+    display: flex;
+    gap: 20px;
+    height: 600px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.chat-sidebar {
+    width: 250px;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.new-chat {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.chat-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+#userInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}
+
+#sendButton {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.user-message {
+    margin-left: auto;
+    background: #007bff;
+    color: white;
+}
+
+.assistant-message {
+    margin-right: auto;
+    background: #f1f1f1;
+}
+
+.system-message {
+    margin: 10px auto;
+    background: #ffd700;
+    text-align: center;
+}
+
+/* 載入動畫 */
+.loading-dots {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+}
+
+.loading-dots div {
+    width: 8px;
+    height: 8px;
+    background: #666;
+    border-radius: 50%;
+    animation: bounce 0.5s infinite alternate;
+}
+
+.loading-dots div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots div:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    to {
+        transform: translateY(-4px);
+    }
+}
+
+/* 聊天歷史項目樣式 */
+.chat-history-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chat-history-item:hover {
+    background-color: #f0f0f0;
+}
+
+.chat-history-item.active {
+    background-color: #e0e0e0;
+}
+
+/* 確保聊天歷史區域有適當的間距和滾動 */
+.chat-history {
+    padding: 10px 0;
+    overflow-y: auto;
+    max-height: calc(100% - 50px); /* 減去新對話按鈕的高度 */
+}
+
+/* 漢堡選單按鈕 */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* 產品卡片樣式調整 */
+    .product-card {
+        padding: 15px;
+    }
+
+    .product-card .button {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    /* 聊天介面調整 */
+    .chat-container {
+        flex-direction: column;
+        height: calc(100vh - 200px);
+    }
+
+    .chat-sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .chat-history {
+        max-height: 60px;
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        gap: 10px;
+        padding: 5px 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin-bottom: 5px;
+    }
+
+    .chat-history::-webkit-scrollbar {
+        display: none;
+    }
+
+    .chat-history-item {
+        flex: 0 0 auto;
+        padding: 8px 15px;
+        margin: 0;
+        background: #f0f0f0;
+        border-radius: 15px;
+        min-width: 100px;
+        max-width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        height: 35px;
+        line-height: 19px;
+    }
+
+    .chat-history::after {
+        content: '';
+        flex: 0 0 10px;
+    }
+
+    .chat-main {
+        height: calc(100% - 130px);
+        flex: 1;
+    }
+
+    .chat-messages {
+        height: calc(100% - 60px);
+    }
+
+    .chat-input-container {
+        position: sticky;
+        bottom: 0;
+        background: white;
+        padding: 10px;
+    }
+
+    /* 調整其他區塊的間距 */
+    section {
+        padding: 40px 0;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .new-chat {
+        padding: 8px;
+        margin: 0;
+        flex-shrink: 0;
+        height: 36px;
+    }
+}
+
+/* 更小螢幕的額外調整 */
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-history-item {
+        min-width: 80px;
+        max-width: 150px;
+        padding: 8px 12px;
+    }
+
+    .chat-sidebar {
+        padding: 8px;
+    }
+
+    .new-chat {
+        font-size: 14px;
+    }
+}
